@@ -1,0 +1,174 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeeeee"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.demo.MainActivity" >
+
+    <!-- 导航栏 -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="#ff6600" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#fba870"
+            android:paddingLeft="30dp" >
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="45dp"
+                android:gravity="center_vertical"
+                android:text="@string/toIndex"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/toIndex"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/jt1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:background="#fba870"
+            android:paddingRight="0dp" >
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="45dp"
+                android:gravity="center_vertical"
+                android:text="@string/toMy"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/toMy"
+            android:layout_width="16dp"
+            android:layout_height="45dp"
+            android:layout_marginRight="0dp"
+            android:contentDescription="@string/app_name"
+            android:paddingRight="0dp"
+            android:src="@drawable/jt2_2" />
+    </LinearLayout>
+    <!-- 导航栏end -->
+
+
+    <!-- 个人信息begin -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="#ee6e0a"
+        android:orientation="vertical"
+        android:paddingBottom="10dp" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:gravity="center_vertical"
+                android:text="@string/toPersonal"
+                android:textColor="#ffffff"
+                android:textSize="25sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp" >
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/personal_66"
+                android:onClick="changeImg" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/personalName"
+                    android:layout_width="80dp"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/eg_name"
+                    android:textColor="#ffffff"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/eg_vip"
+                    android:textColor="#ffffff"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/eg_rest"
+                    android:textColor="#ffffff"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="200dp"
+            android:background="@drawable/button_under"
+            android:gravity="center_vertical"
+            android:text="@string/detail"
+            android:textColor="#ffffff"
+            android:textSize="15sp" />
+    </LinearLayout>
+    <!-- 个人信息end -->
+
+
+    <!-- 链接begin -->
+
+    <ListView
+        android:id="@+id/lv_link"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:divider="#00000000"
+        android:dividerHeight="10dp"
+        android:orientation="vertical" >
+    </ListView>
+    <!-- 链接end -->
+
+    <Button
+        android:id="@+id/logiOut"
+        style="@style/common_button_style"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:onClick="toOut"
+        android:text="@string/toOut"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp" />
+
+</LinearLayout>
