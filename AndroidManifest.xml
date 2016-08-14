@@ -49,6 +49,22 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+         <activity 
+            android:name=".PhotoActivity"
+            android:label="PhotoActivity">
+            <intent-filter >
+                <action android:name="com.example.demo.PhotoActivity"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity 
+            android:name=".SelectPicActivity"
+            android:label="SelectPicActivity">
+            <intent-filter >
+                <action android:name="com.example.demo.SelectPicActivity"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
