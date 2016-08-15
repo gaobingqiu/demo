@@ -25,6 +25,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 import base.JsonUtil;
+import base.PhoneUtil;
 import base.Transformation;
 
 public class MainActivity extends Activity {
@@ -94,6 +95,7 @@ public class MainActivity extends Activity {
 		LoginVo loginVo = new LoginVo();
 		loginVo.setPassword(password);
 		loginVo.setUserName(username);
+		loginVo.setToken(PhoneUtil.getMac());
 		RequestParams params = Transformation.setParams(loginVo);
 		HttpUtils.post(action_interface_login, params, responseHandler);
 	}
