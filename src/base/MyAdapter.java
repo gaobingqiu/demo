@@ -51,7 +51,7 @@ public class MyAdapter extends BaseAdapter {
 			viewHolder.picUrl = (ImageView) convertView.findViewById(R.id.news_image);
 			viewHolder.ctime = (TextView) convertView.findViewById(R.id.news_time);
 			viewHolder.url = (TextView) convertView.findViewById(R.id.news_url);
-			//viewHolder.url.setVisibility(View.GONE);      //隐藏不参与布局（不占地方）
+			viewHolder.url.setVisibility(View.GONE);      //隐藏不参与布局（不占地方）
 			viewHolder.description = (TextView) convertView.findViewById(R.id.news_description);
 			viewHolder.title = (TextView) convertView.findViewById(R.id.new_title);
 			// 通过setTag方式 使viewHolder和convertView绑定在一起
