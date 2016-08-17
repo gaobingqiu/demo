@@ -9,13 +9,18 @@
         android:targetSdkVersion="14" />
 
     <uses-permission android:name="android.permission.INTERNET" />
-     <!-- 操作sd卡权限 -->
+    <!-- 操作sd卡权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme" 
+        android:name="base.MyApplication">
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
@@ -25,43 +30,57 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity 
+        <activity
             android:name=".RegisterActivity"
-            android:label="register">
-            <intent-filter >
-                <action android:name="com.example.demo.RegisterActivity"/>
+            android:label="register" >
+            <intent-filter>
+                <action android:name="com.example.demo.RegisterActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-         <activity 
+        <activity
             android:name=".PersonalActivity"
-            android:label="Personal">
-            <intent-filter >
-                <action android:name="com.example.demo.PersonalActivity"/>
+            android:label="Personal" >
+            <intent-filter>
+                <action android:name="com.example.demo.PersonalActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-         <activity 
+        <activity
             android:name=".RegisterSuccessActivity"
-            android:label="RegisterSuccess">
-            <intent-filter >
-                <action android:name="com.example.demo.RegisterSuccessActivity"/>
+            android:label="RegisterSuccess" >
+            <intent-filter>
+                <action android:name="com.example.demo.RegisterSuccessActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-         <activity 
+        <activity
             android:name=".PhotoActivity"
-            android:label="PhotoActivity">
-            <intent-filter >
-                <action android:name="com.example.demo.PhotoActivity"/>
+            android:label="PhotoActivity" >
+            <intent-filter>
+                <action android:name="com.example.demo.PhotoActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity 
+        <activity
             android:name=".SelectPicActivity"
-            android:label="SelectPicActivity">
-            <intent-filter >
-                <action android:name="com.example.demo.SelectPicActivity"/>
+            android:label="SelectPicActivity" >
+            <intent-filter>
+                <action android:name="com.example.demo.SelectPicActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".NewsMainActivity"
+            android:label="NewsMainActivity" >
+            <intent-filter>
+                <action android:name="com.example.demo.NewsMainActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

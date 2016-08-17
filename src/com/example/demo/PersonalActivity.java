@@ -48,6 +48,12 @@ public class PersonalActivity extends Activity {
 		startActivity(intent);
 	}
 	
+	public void toNews(View view) {
+		Intent intent = new Intent();
+		intent.setClass(PersonalActivity.this, NewsMainActivity.class);
+		startActivity(intent);
+	}
+	
 	public void changeImg(View view) {
 		Log.d(tag, "userOut");
 		Intent intent = new Intent();

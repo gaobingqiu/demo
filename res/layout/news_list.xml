@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/iv_image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tv_nickName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/iv_image"
+        android:gravity="center_horizontal"
+        android:text="昵称"
+        android:textSize="20sp" />
+    
+    
+    <TextView
+        android:id="@+id/news_time"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/iv_image"
+        android:gravity="center_horizontal"
+        android:text="昵称"
+        android:textSize="20sp" />
+    
+    <TextView
+        android:id="@+id/news_url"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/iv_image"
+        android:gravity="center_horizontal"
+        android:text="昵称"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_nickName"
+        android:layout_toRightOf="@id/iv_image"
+        android:text="内容"
+        android:textSize="15sp" />
+
+</RelativeLayout>
