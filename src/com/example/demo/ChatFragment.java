@@ -1,12 +1,12 @@
 package com.example.demo;
 
 import java.util.List;
-import java.util.Map;
 
 import com.baidu.apistore.sdk.ApiCallBack;
 import com.baidu.apistore.sdk.ApiStoreSDK;
 import com.baidu.apistore.sdk.network.Parameters;
 import com.entity.News;
+import com.entity.Pager;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -22,7 +22,6 @@ import base.JsonUtil;
 import base.MyAdapter;
 
 public class ChatFragment extends Fragment {
-	List<Map<String, Object>> news;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,6 +34,11 @@ public class ChatFragment extends Fragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+		requestData();
+	}
+
+	@SuppressWarnings("unchecked")
+	public void requestData(){
 		Parameters para = new Parameters();
 		para.put("num", "10");
 		para.put("page", "1");
@@ -42,9 +46,9 @@ public class ChatFragment extends Fragment {
 			@Override
 			public void onSuccess(int status, String responseString) {
 				Log.i("sdkdemo", "onSuccess");
-				List<News> news= JsonUtil.createJsonToListBean(responseString, News.class);
+				Pager pager= JsonUtil.createJsonBean(responseString,Pager.class);
 				// mTextView.setText(responseString);
-				setList(news);
+				setList(pager.getNewslist());
 			}
 
 			@Override
@@ -54,9 +58,9 @@ public class ChatFragment extends Fragment {
 
 		});
 	}
-
+	
 	public void setList(List<News> news) {
-		ListView linkList = (ListView) getActivity().findViewById(R.id.lv_link);
+		ListView linkList = (ListView) getActivity().findViewById(R.id.news_list);
 		MyAdapter adapter = new MyAdapter(news,getActivity());
 		linkList.setAdapter(adapter);
 		adapter.notifyDataSetChanged();

@@ -52,4 +52,10 @@ public class News {
 		this.url = url;
 	}
 
+	@Override
+	public String toString() {
+		return "News [ctime=" + ctime + ", title=" + title + ", description=" + description + ", picUrl=" + picUrl
+				+ ", url=" + url + "]";
+	}
+
 }

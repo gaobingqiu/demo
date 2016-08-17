@@ -6,6 +6,7 @@ import com.entity.News;
 import com.example.demo.R;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MyAdapter extends BaseAdapter {
+	String tag = "MyAdapter->";
 	private List<News> list;
 	private Context context;
 
@@ -42,31 +44,38 @@ public class MyAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		// TODO Auto-generated method stub
-		// 文艺式
 		ViewHolder viewHolder;
 		if (convertView == null) {
 			viewHolder = new ViewHolder();
 			convertView = View.inflate(context, R.layout.news_list, null);
-			viewHolder.imageView = (ImageView) convertView.findViewById(R.id.iv_image);
-			viewHolder.nickName = (TextView) convertView.findViewById(R.id.tv_nickName);
-			viewHolder.content = (TextView) convertView.findViewById(R.id.tv_content);
+			viewHolder.picUrl = (ImageView) convertView.findViewById(R.id.news_image);
+			viewHolder.ctime = (TextView) convertView.findViewById(R.id.news_time);
+			viewHolder.url = (TextView) convertView.findViewById(R.id.news_url);
+			viewHolder.description = (TextView) convertView.findViewById(R.id.news_description);
+			viewHolder.title = (TextView) convertView.findViewById(R.id.new_title);
 			// 通过setTag方式 使viewHolder和convertView绑定在一起
 			convertView.setTag(viewHolder);
 		}
 		viewHolder = (ViewHolder) convertView.getTag();
+		for (News news : list) {
+			Log.d(tag, news.toString());
+		}
 		News news = list.get(position);
-		// viewHolder.imageView.setBackgroundResource(u);
-		// viewHolder.nickName.setText(myObject.getNickName());
-		// viewHolder.content.setText(myObject.getContent());
+		 //viewHolder.picUrl.setBackgroundResource(news.getPicUrl());
+		 viewHolder.ctime.setText(news.getCtime());
+		 viewHolder.description.setText(news.getDescription());
+		 viewHolder.title.setText(news.getTitle());
+		 viewHolder.url.setText(news.getUrl());
 		return convertView;
 	}
 
 	// 避免重复的findViewById
 	class ViewHolder {
-		public ImageView imageView;
-		private TextView nickName;
-		private TextView content;
+		public ImageView picUrl;
+		private TextView ctime;
+		private TextView url;
+		private TextView description;
+		private TextView title;
 	}
 
 }
