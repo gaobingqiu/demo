@@ -123,12 +123,12 @@ public final class R {
         public static final int loginName=0x7f09002d;
         public static final int lv_link=0x7f09002a;
         public static final int natives=0x7f090018;
-        public static final int new_title=0x7f090023;
-        public static final int news_description=0x7f090026;
-        public static final int news_image=0x7f090022;
+        public static final int new_title=0x7f090022;
+        public static final int news_description=0x7f090025;
+        public static final int news_image=0x7f090026;
         public static final int news_list=0x7f090014;
-        public static final int news_time=0x7f090024;
-        public static final int news_url=0x7f090025;
+        public static final int news_time=0x7f090023;
+        public static final int news_url=0x7f090024;
         public static final int pai=0x7f090019;
         public static final int password=0x7f090031;
         public static final int personalName=0x7f090029;
