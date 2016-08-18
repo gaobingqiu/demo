@@ -26,26 +26,31 @@ public class ChatFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
+		requestData();
 		View chatView = inflater.inflate(R.layout.activity_tab_chat, container, false);
 		return chatView;
-
 	}
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		requestData();
 	}
-
+	
+	Pager pager = null;
+	
 	@SuppressWarnings("unchecked")
 	public void requestData(){
 		Parameters para = new Parameters();
 		para.put("num", "10");
 		para.put("page", "1");
+		if (pager != null) {
+			setList(pager.getNewslist());
+			return;
+		}
 		ApiStoreSDK.execute("http://apis.baidu.com/txapi/world/world", ApiStoreSDK.GET, para, new ApiCallBack() {
 			@Override
 			public void onSuccess(int status, String responseString) {
-				Log.i("sdkdemo", "onSuccess");
+				Log.i("sdkdemo", responseString);
 				Pager pager= JsonUtil.createJsonBean(responseString,Pager.class);
 				// mTextView.setText(responseString);
 				setList(pager.getNewslist());

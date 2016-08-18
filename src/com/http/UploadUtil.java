@@ -143,7 +143,6 @@ public class UploadUtil {
             conn.setRequestProperty("connection", "keep-alive");  
             conn.setRequestProperty("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)");  
             conn.setRequestProperty("Content-Type", CONTENT_TYPE + ";boundary=" + BOUNDARY);  
-//          conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");  
               
             /** 
              * 当文件不为空，把文件包装并且上传 

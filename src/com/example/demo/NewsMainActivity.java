@@ -1,16 +1,13 @@
 package com.example.demo;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -20,7 +17,6 @@ public class NewsMainActivity extends FragmentActivity {
 
 	private ViewPager mPageVp;
 
-	private List<Fragment> mFragmentList = new ArrayList<Fragment>();
 	private FragmentAdapter mFragmentAdapter;
 
 	/**
@@ -31,12 +27,6 @@ public class NewsMainActivity extends FragmentActivity {
 	 * Tab的那个引导线
 	 */
 	private ImageView mTabLineIv;
-	/**
-	 * Fragment
-	 */
-	private ChatFragment mChatFg;
-	private FriendFragment mFriendFg;
-	private ContactsFragment mContactsFg;
 	/**
 	 * ViewPager的当前选中页
 	 */
@@ -49,6 +39,7 @@ public class NewsMainActivity extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.news_activity_main);
 		findById();
 		init();
@@ -67,18 +58,11 @@ public class NewsMainActivity extends FragmentActivity {
 	}
 
 	private void init() {
-		mFriendFg = new FriendFragment();
-		mContactsFg = new ContactsFragment();
-		mChatFg = new ChatFragment();
-		mFragmentList.add(mChatFg);
-		mFragmentList.add(mFriendFg);
-		mFragmentList.add(mContactsFg);
 
-		mFragmentAdapter = new FragmentAdapter(
-				this.getSupportFragmentManager(), mFragmentList);
+		mFragmentAdapter = new FragmentAdapter(this.getSupportFragmentManager());
 		mPageVp.setAdapter(mFragmentAdapter);
+		mPageVp.setOffscreenPageLimit(2);
 		mPageVp.setCurrentItem(0);
-
 		mPageVp.setOnPageChangeListener(new OnPageChangeListener() {
 
 			/**
@@ -94,40 +78,30 @@ public class NewsMainActivity extends FragmentActivity {
 			 * offsetPixels:当前页面偏移的像素位置
 			 */
 			@Override
-			public void onPageScrolled(int position, float offset,
-					int offsetPixels) {
-				LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) mTabLineIv
-						.getLayoutParams();
+			public void onPageScrolled(int position, float offset, int offsetPixels) {
+				LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) mTabLineIv.getLayoutParams();
 
 				Log.e("offset:", offset + "");
 				/**
 				 * 利用currentIndex(当前所在页面)和position(下一个页面)以及offset来
-				 * 设置mTabLineIv的左边距 滑动场景：
-				 * 记3个页面,
-				 * 从左到右分别为0,1,2 
-				 * 0->1; 1->2; 2->1; 1->0
+				 * 设置mTabLineIv的左边距 滑动场景： 记3个页面, 从左到右分别为0,1,2 0->1; 1->2; 2->1;
+				 * 1->0
 				 */
 
 				if (currentIndex == 0 && position == 0)// 0->1
 				{
-					lp.leftMargin = (int) (offset * (screenWidth * 1.0 / 3) + currentIndex
-							* (screenWidth / 3));
+					lp.leftMargin = (int) (offset * (screenWidth * 1.0 / 3) + currentIndex * (screenWidth / 3));
 
 				} else if (currentIndex == 1 && position == 0) // 1->0
 				{
-					lp.leftMargin = (int) (-(1 - offset)
-							* (screenWidth * 1.0 / 3) + currentIndex
-							* (screenWidth / 3));
+					lp.leftMargin = (int) (-(1 - offset) * (screenWidth * 1.0 / 3) + currentIndex * (screenWidth / 3));
 
 				} else if (currentIndex == 1 && position == 1) // 1->2
 				{
-					lp.leftMargin = (int) (offset * (screenWidth * 1.0 / 3) + currentIndex
-							* (screenWidth / 3));
+					lp.leftMargin = (int) (offset * (screenWidth * 1.0 / 3) + currentIndex * (screenWidth / 3));
 				} else if (currentIndex == 2 && position == 1) // 2->1
 				{
-					lp.leftMargin = (int) (-(1 - offset)
-							* (screenWidth * 1.0 / 3) + currentIndex
-							* (screenWidth / 3));
+					lp.leftMargin = (int) (-(1 - offset) * (screenWidth * 1.0 / 3) + currentIndex * (screenWidth / 3));
 				}
 				mTabLineIv.setLayoutParams(lp);
 			}
@@ -157,11 +131,9 @@ public class NewsMainActivity extends FragmentActivity {
 	 */
 	private void initTabLineWidth() {
 		DisplayMetrics dpMetrics = new DisplayMetrics();
-		getWindow().getWindowManager().getDefaultDisplay()
-				.getMetrics(dpMetrics);
+		getWindow().getWindowManager().getDefaultDisplay().getMetrics(dpMetrics);
 		screenWidth = dpMetrics.widthPixels;
-		LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) mTabLineIv
-				.getLayoutParams();
+		LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) mTabLineIv.getLayoutParams();
 		lp.width = screenWidth / 3;
 		mTabLineIv.setLayoutParams(lp);
 	}

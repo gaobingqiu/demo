@@ -29,7 +29,7 @@ import base.PhoneUtil;
 import base.Transformation;
 
 public class MainActivity extends Activity {
-	String action = "com.example.demo.RegisterActivity";
+	String action = "com.example.demo.NewsMainActivity";
 	String action_login = "com.example.demo.PersonalActivity";
 	String action_interface_login = "loginInterface/login.do";
 	EditText userNameView;

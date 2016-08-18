@@ -45,5 +45,10 @@
     <string name="to_password">登录密码管理</string>
     <string name="to_answer">常见问题</string>
     <string name="toOut">退出登录</string>
+    
+     <!--   news_top    -->
+    <string name="global">国际新闻</string>
+    <string name="pe_news">体育新闻</string>
+    <string name="te_news">科技新闻</string>
 
 </resources>
