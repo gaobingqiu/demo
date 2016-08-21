@@ -1,46 +1,32 @@
 package base;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import com.example.demo.ChatFragment;
-import com.example.demo.ContactsFragment;
-import com.example.demo.FriendFragment;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 public class FragmentAdapter extends FragmentPagerAdapter {
+	private ArrayList<Fragment> list;
 
 	public FragmentAdapter(FragmentManager fm) {
 		super(fm);
-		// TODO Auto-generated constructor stub
 	}
 
-	List<Fragment> fragmentList = new ArrayList<Fragment>();
+	public FragmentAdapter(FragmentManager fm, ArrayList<Fragment> list) {
+		super(fm);
+		this.list = list;
+	}
 
 	@Override
-	public Fragment getItem(int position) {
-		switch (position) {
-		case 0:
-			ChatFragment chatFragment = new ChatFragment();
-			return chatFragment;
-		case 1:
-			ContactsFragment contactsFragment = new ContactsFragment();
-			return contactsFragment;
-		case 2:
-			FriendFragment friendFragment = new FriendFragment();
-			return friendFragment;
-		default:
-			return null;
-		}
-
+	public Fragment getItem(int arg0) {
+		// TODO Auto-generated method stub
+		return list.get(arg0);
 	}
 
 	@Override
 	public int getCount() {
-		return 3;
+		// TODO Auto-generated method stub
+		return list.size();
 	}
-	
 }
