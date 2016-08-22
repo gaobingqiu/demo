@@ -34,10 +34,17 @@ public class MyAdapter extends BaseAdapter {
 		this.context = context;
 	}
 
+	public void setData(List<News> news) {
+		this.list = news;
+	}
+	
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return list.size();
+		if (null != list) {
+			return list.size();
+		}
+		return 0;
 	}
 
 	@Override

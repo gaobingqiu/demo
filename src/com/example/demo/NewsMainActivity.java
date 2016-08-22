@@ -77,7 +77,7 @@ public class NewsMainActivity extends FragmentActivity {
 
 		mFragmentAdapter = new FragmentAdapter(this.getSupportFragmentManager(),list);
 		mPageVp.setAdapter(mFragmentAdapter);
-		//mPageVp.setOffscreenPageLimit(2);
+		mPageVp.setOffscreenPageLimit(2);
 		mPageVp.setCurrentItem(0);
 		mPageVp.setOnPageChangeListener(new OnPageChangeListener() {
 
