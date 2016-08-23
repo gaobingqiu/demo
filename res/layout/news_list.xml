@@ -46,7 +46,7 @@
         </LinearLayout>
     </LinearLayout>
 
-    <ImageView
+    <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/news_image"
         android:layout_width="75dp"
         android:layout_marginTop="5dp"

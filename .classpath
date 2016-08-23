@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="D:/android/jar/volley.jar"/>
 	<classpathentry exported="true" kind="lib" path="D:/android/jar/ApiStoreSDK1.0.4.jar"/>
 	<classpathentry exported="true" kind="lib" path="D:/android/jar/android-support-v4.jar"/>
 	<classpathentry exported="true" kind="lib" path="D:/android/jar/android-async-http-1.4.7.jar"/>
