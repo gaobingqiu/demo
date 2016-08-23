@@ -151,7 +151,7 @@ public class PersonalActivity extends Activity {
        Intent intent =  new  Intent( this , RegisterActivity. class );  
        PendingIntent pendingIntent = PendingIntent.getActivity( this ,  0 , intent, PendingIntent.FLAG_ONE_SHOT);  
         // 点击状态栏的图标出现的提示信息设置   
-       notification.setLatestEventInfo( this ,  "内容提示：" ,  "我就是一个测试文件" , pendingIntent);  
+       notification.setLatestEventInfo( this ,  "欢迎你：" ,  user.getUserName() , pendingIntent);  
        manager.notify( 1 , notification);  
          
    }  
