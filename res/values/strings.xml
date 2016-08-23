@@ -2,6 +2,8 @@
 <resources>
 
     <string name="app_name">demo</string>
+    <string name="back">返回</string>
+    <string name="submit">提交</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="buttonName">登录</string>
@@ -50,5 +52,10 @@
     <string name="global">国际新闻</string>
     <string name="pe_news">体育新闻</string>
     <string name="te_news">科技新闻</string>
+    
+    <!--   photo Upload    -->
+    <string name="photo_tips">请输入个性签名和选择个人照片！</string>
+    <string name="photo_title">个性信息</string>
+    <string name="photo_count">还可以输入100个字符！</string>
 
 </resources>

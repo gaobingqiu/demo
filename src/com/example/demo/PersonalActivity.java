@@ -55,7 +55,6 @@ public class PersonalActivity extends Activity {
 	}
 	
 	public void changeImg(View view) {
-		Log.d(tag, "userOut");
 		Intent intent = new Intent();
 		intent.setClass(PersonalActivity.this, PhotoActivity.class);
 		startActivity(intent);

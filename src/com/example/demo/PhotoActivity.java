@@ -83,13 +83,6 @@ public class PhotoActivity extends Activity {
 
 		msign = (TextView) findViewById(R.id.sign);
 
-		msina = (CheckBox) findViewById(R.id.sina);
-		mtencent = (CheckBox) findViewById(R.id.tencent);
-		mqq = (CheckBox) findViewById(R.id.qq);
-		mrenren = (CheckBox) findViewById(R.id.renren);
-		mqzoon = (CheckBox) findViewById(R.id.qzoon);
-		mdouban = (CheckBox) findViewById(R.id.douban);
-
 		mback.setOnClickListener(new OnClickListener() { 
 
 			@Override
@@ -386,5 +379,7 @@ public class PhotoActivity extends Activity {
 	private long getInputCount() {
 		return calculateLength(mSuggest.getText().toString());
 	}
+	
+	
 
 }
