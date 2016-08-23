@@ -106,12 +106,10 @@ public class MainActivity extends Activity {
 			if (null == response||response.isEmpty()) {
 				Log.d(tag, "连接异常");
 			} else {
-				User user = new User();
 				try {
-					user = JsonUtil.createJsonBean(response, User.class);
 					Intent intent = new Intent();
 					intent.setClass(MainActivity.this, PersonalActivity.class);
-					intent.putExtra("userName", user.getUserName());
+					intent.putExtra("user", response);
 					startActivity(intent);
 				} catch (Exception e) {
 					// TODO: handle exception

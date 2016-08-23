@@ -31,7 +31,7 @@ public class MyFragment extends Fragment {
 	private String key = null;
 	private ListView mListView;
 	private MyAdapter adapter;
-	
+
 	static MyFragment newInstance(String s, String requestUrl) {
 		MyFragment myFragment = new MyFragment(requestUrl);
 		Bundle bundle = new Bundle();
@@ -108,7 +108,7 @@ public class MyFragment extends Fragment {
 		dataList = news;
 		adapter.setData(news);
 		adapter.notifyDataSetChanged();
-		
+
 	}
 
 	class MyHandler extends Handler {
@@ -122,5 +122,9 @@ public class MyFragment extends Fragment {
 			dataList = pager.getNewslist();
 			refreshList(dataList);
 		}
+	}
+
+	public void getNews() {
+		requestData();
 	}
 }

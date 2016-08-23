@@ -9,6 +9,8 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -64,18 +66,17 @@ public class NewsMainActivity extends FragmentActivity {
 	}
 
 	private void init() {
-		Fragment zh = MyFragment.newInstance(Contents.ZH,globalUrl);
-		Fragment xw = MyFragment.newInstance(Contents.PE,peUrl);
-		Fragment yl = MyFragment.newInstance(Contents.TE,teUrl);
-		
-		
+		Fragment zh = MyFragment.newInstance(Contents.ZH, globalUrl);
+		Fragment xw = MyFragment.newInstance(Contents.PE, peUrl);
+		Fragment yl = MyFragment.newInstance(Contents.TE, teUrl);
+
 		ArrayList<Fragment> list = new ArrayList<Fragment>();
-		
+
 		list.add(zh);
 		list.add(xw);
 		list.add(yl);
 
-		mFragmentAdapter = new FragmentAdapter(this.getSupportFragmentManager(),list);
+		mFragmentAdapter = new FragmentAdapter(this.getSupportFragmentManager(), list);
 		mPageVp.setAdapter(mFragmentAdapter);
 		mPageVp.setOffscreenPageLimit(2);
 		mPageVp.setCurrentItem(0);
@@ -95,31 +96,31 @@ public class NewsMainActivity extends FragmentActivity {
 			 */
 			@Override
 			public void onPageScrolled(int position, float offset, int offsetPixels) {
-//				LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) mTabLineIv.getLayoutParams();
-//
-//				Log.e("offset:", offset + "");
-//				/**
-//				 * 利用currentIndex(当前所在页面)和position(下一个页面)以及offset来
-//				 * 设置mTabLineIv的左边距 滑动场景： 记3个页面, 从左到右分别为0,1,2 0->1; 1->2; 2->1;
-//				 * 1->0
-//				 */
-//
-//				if (currentIndex == 0 && position == 0)// 0->1
-//				{
-//					lp.leftMargin = (int) (offset * (screenWidth * 1.0 / 3) + currentIndex * (screenWidth / 3));
-//
-//				} else if (currentIndex == 1 && position == 0) // 1->0
-//				{
-//					lp.leftMargin = (int) (-(1 - offset) * (screenWidth * 1.0 / 3) + currentIndex * (screenWidth / 3));
-//
-//				} else if (currentIndex == 1 && position == 1) // 1->2
-//				{
-//					lp.leftMargin = (int) (offset * (screenWidth * 1.0 / 3) + currentIndex * (screenWidth / 3));
-//				} else if (currentIndex == 2 && position == 1) // 2->1
-//				{
-//					lp.leftMargin = (int) (-(1 - offset) * (screenWidth * 1.0 / 3) + currentIndex * (screenWidth / 3));
-//				}
-//				mTabLineIv.setLayoutParams(lp);
+				LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) mTabLineIv.getLayoutParams();
+
+				Log.e("offset:", offset + "");
+				/**
+				 * 利用currentIndex(当前所在页面)和position(下一个页面)以及offset来
+				 * 设置mTabLineIv的左边距 滑动场景： 记3个页面, 从左到右分别为0,1,2 0->1; 1->2; 2->1;
+				 * 1->0
+				 */
+
+				if (currentIndex == 0 && position == 0)// 0->1
+				{
+					lp.leftMargin = (int) (offset * (screenWidth * 1.0 / 3) + currentIndex * (screenWidth / 3));
+
+				} else if (currentIndex == 1 && position == 0) // 1->0
+				{
+					lp.leftMargin = (int) (-(1 - offset) * (screenWidth * 1.0 / 3) + currentIndex * (screenWidth / 3));
+
+				} else if (currentIndex == 1 && position == 1) // 1->2
+				{
+					lp.leftMargin = (int) (offset * (screenWidth * 1.0 / 3) + currentIndex * (screenWidth / 3));
+				} else if (currentIndex == 2 && position == 1) // 2->1
+				{
+					lp.leftMargin = (int) (-(1 - offset) * (screenWidth * 1.0 / 3) + currentIndex * (screenWidth / 3));
+				}
+				mTabLineIv.setLayoutParams(lp);
 			}
 
 			@Override

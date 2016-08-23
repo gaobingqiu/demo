@@ -7,6 +7,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 
+import org.apache.http.Header;
+
+import com.http.HttpUtils;
+import com.loopj.android.http.RequestParams;
+import com.loopj.android.http.TextHttpResponseHandler;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -34,14 +40,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 /**
- * @author zhiwei.zhao
- * @project PhotoUtils
- * @created: 2013-3-14 下午5:13:00
- * @Description 拍照、从系统相册选择上传
+ * 拍照上传或者调用系统相册
+ * @author Administrator
+ *
  */
 public class PhotoActivity extends Activity {
+	private String action_upload = "imageUploadInterface/upload2.do";
+	private String filePath;
 	private static final int MAX_COUNT = 100;
 	private Button mback;
 	@SuppressWarnings("unused")
@@ -183,6 +189,7 @@ public class PhotoActivity extends Activity {
 				cursor.moveToFirst();
 
 				String imageFilePath = cursor.getString(1);
+				this.filePath = imageFilePath;
 				System.out.println("File path is----->" + imageFilePath);
 
 				FileInputStream fis = new FileInputStream(imageFilePath);
@@ -380,6 +387,29 @@ public class PhotoActivity extends Activity {
 		return calculateLength(mSuggest.getText().toString());
 	}
 	
+	public void upImg(View view){
+		RequestParams params = new RequestParams();
+		
+		File file = new File(filePath);
+		try {
+			params.put("file", file);
+			HttpUtils.post(action_upload, params, responseHandler);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
 	
+	private TextHttpResponseHandler responseHandler = new TextHttpResponseHandler() {
+		@Override
+		public void onSuccess(int statusCode, Header[] headers, String response) {
+			Log.d("photo", response);
+		}
+
+		@Override
+		public void onFailure(int i, Header[] aheader, String s, Throwable throwable) {
+			// TODO Auto-generated method stub
+			Log.e("photo", "error");
+		}
+	};
 
 }

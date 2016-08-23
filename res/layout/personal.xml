@@ -94,6 +94,7 @@
             android:layout_marginLeft="30dp" >
 
             <ImageView
+                android:id="@+id/personal_img"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:contentDescription="@string/app_name"
