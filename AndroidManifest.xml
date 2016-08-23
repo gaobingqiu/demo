@@ -19,25 +19,27 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-
+<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <application
         android:name="base.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-         <service
-            android:enabled="true" android:name = ".Message">                     
-        </service>
-        <receiver android:name=".BootBroadcastReceiver" >
+       <!-- 开机自启动广播接受 -->
+        <receiver android:name="base.service.AutoStartBroadcastReceiver" >
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" >
-                </action>
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+        
+        <!-- 开机自启动服务-->
+         <service android:name="base.service.AutoStartService"
+            android:label="AutoStartService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":remote">
+        </service>
 
         <activity
             android:name=".MainActivity"
