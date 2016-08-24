@@ -25,6 +25,7 @@ public class Transformation {
 		for (int i = 0; i < fields.length; i++) {
 			params.put(fields[i].getName(), getValueByName(fields[i].getName(), object));
 		}
+		params.put("token", PhoneUtil.getMac());
 		return params;
 	}
 

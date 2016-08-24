@@ -75,22 +75,16 @@ public class MyAdapter extends BaseAdapter {
 			viewHolder.title = (TextView) convertView.findViewById(R.id.new_title);
 			// 通过setTag方式 使viewHolder和convertView绑定在一起
 			convertView.setTag(viewHolder);
-		}
-		else {
+		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
 		viewHolder = (ViewHolder) convertView.getTag();
 		News news = list.get(position);
-		if (null == news.getPicUrl() || news.getPicUrl().isEmpty()) {
-			Log.d(tag, "无图");
-		} else {
-			imgUrl = news.getPicUrl();
-			if (imgUrl != null && !imgUrl.equals("")) {
-				viewHolder.img.setDefaultImageResId(R.drawable.ic_launcher);
-				viewHolder.img.setErrorImageResId(R.drawable.ic_launcher);
-				viewHolder.img.setImageUrl(imgUrl, imageLoader);
-			}
-		}
+		imgUrl = news.getPicUrl();
+		viewHolder.img.setDefaultImageResId(R.drawable.nubia);
+		viewHolder.img.setErrorImageResId(R.drawable.nubia);
+		viewHolder.img.setImageUrl(imgUrl, imageLoader);
+
 		viewHolder.ctime.setText(news.getCtime().substring(5));
 		viewHolder.description.setText(news.getDescription());
 		viewHolder.title.setText(news.getTitle());

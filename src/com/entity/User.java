@@ -24,6 +24,8 @@ public class User {
 	private String tel;
 
 	private String email;
+	
+	private String androidImage;
 
 	private String image;
 
@@ -139,6 +141,14 @@ public class User {
 
 	public int getEnable() {
 		return enable;
+	}
+
+	public String getAndroidImage() {
+		return androidImage;
+	}
+
+	public void setAndroidImage(String androidImage) {
+		this.androidImage = androidImage;
 	}
 
 }

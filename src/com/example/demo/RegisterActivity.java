@@ -27,21 +27,45 @@ public class RegisterActivity extends Activity {
 	private String action_interface_register = "interfaces/register.do";
 	private String url_register_request = "loginInterface/register.do";
 	private String url_getCode = "loginInterface/getCode.do";
-	EditText loginNameView, telView, codeView, passwordView;
-
+	private EditText loginNameView, telView, codeView, passwordView;
+	private String loginName,tel,code,password;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// 清除标题栏
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.register);
+		findIds();
 	}
-
-	public void sumbitRegister(View view) {
+	
+	public void findIds(){
 		loginNameView = (EditText) findViewById(R.id.loginName);
 		telView = (EditText) findViewById(R.id.tel);
 		codeView = (EditText) findViewById(R.id.code);
 		passwordView = (EditText) findViewById(R.id.password);
+	}
+
+	public void sumbitRegister(View view) {
+		loginName = loginNameView.getText().toString();
+		password = passwordView.getText().toString();
+		code = codeView.getText().toString();
+		tel = telView.getText().toString();
+		if (null == loginName || loginName.isEmpty()) {
+			Toast.makeText(this, "姓名不能为空", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		if (null == password || password.isEmpty()) {
+			Toast.makeText(this, "姓名不能为空", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		if (null == code || code.isEmpty()) {
+			Toast.makeText(this, "姓名不能为空", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		if (null == tel || tel.isEmpty()) {
+			Toast.makeText(this, "姓名不能为空", Toast.LENGTH_SHORT).show();
+			return;
+		}
 		RegisterRequestVo registerRequestVo = new RegisterRequestVo();
 		registerRequestVo.setUserName(loginNameView.getText().toString());
 		registerRequestVo.setPassword(passwordView.getText().toString());
@@ -57,6 +81,10 @@ public class RegisterActivity extends Activity {
 		String name = "gbq";
 		String webName = "nubia";
 		String verifyCode = "gbq123456";
+		if (null == name || name.isEmpty()) {
+			Toast.makeText(this, "姓名不能为空", Toast.LENGTH_SHORT).show();
+			return;
+		}
 		RequestParams params = new RequestParams();
 		params.put("userName", name);
 		params.put("webName", webName);

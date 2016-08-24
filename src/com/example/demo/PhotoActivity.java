@@ -387,6 +387,10 @@ public class PhotoActivity extends Activity {
 		return calculateLength(mSuggest.getText().toString());
 	}
 	
+	/**
+	 * 点击上传图片
+	 * @param view
+	 */
 	public void upImg(View view){
 		RequestParams params = new RequestParams();
 		
@@ -398,7 +402,7 @@ public class PhotoActivity extends Activity {
 			// TODO: handle exception
 		}
 	}
-	
+
 	private TextHttpResponseHandler responseHandler = new TextHttpResponseHandler() {
 		@Override
 		public void onSuccess(int statusCode, Header[] headers, String response) {

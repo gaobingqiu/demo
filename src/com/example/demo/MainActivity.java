@@ -3,7 +3,6 @@ package com.example.demo;
 import org.apache.http.Header;
 
 import com.entity.LoginVo;
-import com.entity.User;
 import com.http.HttpUtils;
 import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.TextHttpResponseHandler;
@@ -24,7 +23,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
-import base.JsonUtil;
 import base.PhoneUtil;
 import base.Transformation;
 

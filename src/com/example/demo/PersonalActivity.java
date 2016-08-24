@@ -58,13 +58,13 @@ public class PersonalActivity extends Activity {
 		}
 		mPersonalImg = (ImageView) findViewById(R.id.personal_img);
 		setList();
-		getImg(user.getImage());
+		getImg(user.getAndroidImage());
 	}
 
 	public void getImg(String url) {
 		// 加载网络图片begin
 		// 创建客户端对象
-		url = HttpUtils.BASE_URL + url;
+		url = HttpUtils.SERVER_IP + url;
 		AsyncHttpClient client = new AsyncHttpClient();
 		client.get(url, new AsyncHttpResponseHandler() {
 			@Override

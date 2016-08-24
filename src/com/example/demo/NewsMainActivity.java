@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
@@ -43,7 +45,7 @@ public class NewsMainActivity extends FragmentActivity {
 	 * 屏幕的宽度
 	 */
 	private int screenWidth;
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -163,5 +165,21 @@ public class NewsMainActivity extends FragmentActivity {
 		mTabFriendTv.setTextColor(Color.BLACK);
 		mTabContactsTv.setTextColor(Color.BLACK);
 	}
+
+	public void toGlobal(View view) {
+		mPageVp.setCurrentItem(0);
+		mFragmentAdapter.notifyDataSetChanged();
+	}
+
+	public void toPE(View view) {
+		mPageVp.setCurrentItem(1);
+		mFragmentAdapter.notifyDataSetChanged();
+	}
+
+	public void toTe(View view) {
+		mPageVp.setCurrentItem(2);
+		mFragmentAdapter.notifyDataSetChanged();
+	}
+	
 
 }

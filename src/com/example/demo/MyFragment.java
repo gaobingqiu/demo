@@ -8,6 +8,7 @@ import com.baidu.apistore.sdk.network.Parameters;
 import com.entity.News;
 import com.entity.Pager;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -23,6 +24,7 @@ import base.MyAdapter;
 import base.PageBean;
 
 public class MyFragment extends Fragment {
+	private static int count=0;
 	private PageBean pageBean;
 	private String requestUrl;
 	private final String KeyId = "bc22ec037f0ddacb73c341fcb187a432";
@@ -127,4 +129,13 @@ public class MyFragment extends Fragment {
 	public void getNews() {
 		requestData();
 	}
+	
+	@Override  
+    public void onAttach(Activity activity) {  
+        super.onAttach(activity);  
+//        Log.d("Fragment 1", "onAttach");  
+//        if(count>1){
+//        requestData();}
+//        count++;
+    }  
 }

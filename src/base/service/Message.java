@@ -13,7 +13,7 @@ import android.os.IBinder;
 import android.util.Log;
 
 public class Message extends Service {
-	private final String tag ="Service";
+	private final String tag = "Service";
 	Context context;
 
 	@Override
@@ -31,7 +31,7 @@ public class Message extends Service {
 
 		// 创建一个通知
 		Notification notification = new Notification(R.drawable.register_success, "巴拉巴拉~~", System.currentTimeMillis());
-		notification.setLatestEventInfo(context, "点击查看", "点击查看详细内容", pendingIntent);
+		notification.setLatestEventInfo(context, "点击查看", "欢迎使用Nubia账户", pendingIntent);
 
 		// 用NotificationManager的notify方法通知用户生成标题栏消息通知
 		NotificationManager nManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
@@ -59,10 +59,10 @@ public class Message extends Service {
 		CreateInform();
 		return null;
 	}
-	
-	/* 当从新尝试绑定时执行 */  
-    @Override  
-    public void onRebind(Intent intent) {  
-        super.onRebind(intent);  
-    }  
+
+	/* 当从新尝试绑定时执行 */
+	@Override
+	public void onRebind(Intent intent) {
+		super.onRebind(intent);
+	}
 }

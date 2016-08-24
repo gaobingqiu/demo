@@ -19,8 +19,8 @@ public class AutoStartBroadcastReceiver extends BroadcastReceiver {
 			context.startService(service);
 			Log.d("TAG2","test service");
 			// 启动应用，参数为需要自动启动的应用的包名，只是启动app的activity的包名
-			Intent newIntent = context.getPackageManager().getLaunchIntentForPackage("com.example.demo");
-			context.startActivity(newIntent);
+//			Intent newIntent = context.getPackageManager().getLaunchIntentForPackage("com.example.demo");
+//			context.startActivity(newIntent);
 		}
 	}
 

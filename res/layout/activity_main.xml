@@ -9,11 +9,11 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="300dp"
-        android:layout_height="100dp"
+        android:layout_height="150dp"
         android:layout_gravity="center_horizontal"
         android:contentDescription="@string/app_name"
         android:paddingLeft="50dp"
-        android:src="@drawable/bg_logo_101" />
+        android:src="@drawable/niuniu" />
 
     <EditText
         android:id="@+id/userName"

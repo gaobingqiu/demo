@@ -29,7 +29,8 @@
                 android:gravity="center"
                 android:text="@string/global"
                 android:textColor="#0000FF"
-                android:textSize="15sp" />
+                android:textSize="15sp" 
+                android:onClick="toGlobal"/>
         </LinearLayout>
 
         <LinearLayout
@@ -51,7 +52,8 @@
                 android:gravity="center"
                 android:text="@string/pe_news"
                 android:textColor="#000000"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:onClick="toPE" />
         </LinearLayout>
 
         <LinearLayout
@@ -72,7 +74,8 @@
                 android:gravity="center"
                 android:text="@string/te_news"
                 android:textColor="#000000"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:onClick="toTe" />
         </LinearLayout>
     </LinearLayout>
 
