@@ -2,13 +2,18 @@ package com.example.demo;
 
 import java.util.List;
 
+import org.apache.http.Header;
+
 import com.baidu.apistore.sdk.ApiCallBack;
 import com.baidu.apistore.sdk.ApiStoreSDK;
 import com.baidu.apistore.sdk.network.Parameters;
 import com.entity.News;
 import com.entity.Pager;
+import com.http.HttpUtils;
+import com.loopj.android.http.TextHttpResponseHandler;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -18,24 +23,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 import base.Contents;
 import base.JsonUtil;
 import base.MyAdapter;
 import base.PageBean;
 
 public class MyFragment extends Fragment {
-	private static int count=0;
-	private PageBean pageBean;
-	private String requestUrl;
-	private final String KeyId = "bc22ec037f0ddacb73c341fcb187a432";
+	private final String action_news_global = "NewsInterface/getGlobalNews.do";
+	private final String action_news_pe = "NewsInterface/getPElNews.do";
+	private final String action_news_te = "NewsInterface/getTeNews.do";
 	private List<News> dataList;
 	MyHandler handler;
 	private String key = null;
 	private ListView mListView;
 	private MyAdapter adapter;
+	private String requestUrl;
 
-	static MyFragment newInstance(String s, String requestUrl) {
-		MyFragment myFragment = new MyFragment(requestUrl);
+	static MyFragment newInstance(String s) {
+		MyFragment myFragment = new MyFragment();
 		Bundle bundle = new Bundle();
 		bundle.putString("key", s);
 		myFragment.setArguments(bundle);
@@ -43,9 +49,8 @@ public class MyFragment extends Fragment {
 
 	}
 
-	public MyFragment(String requestUrl) {
+	public MyFragment() {
 		// TODO Auto-generated constructor stub
-		this.requestUrl = requestUrl;
 	}
 
 	@Override
@@ -80,31 +85,36 @@ public class MyFragment extends Fragment {
 
 	Pager pager = null;
 
-	@SuppressWarnings("unchecked")
 	public void requestData() {
-		handler = new MyHandler();
-		Parameters para = new Parameters();
-		pageBean = new PageBean(1, 10);
-		para.put("num", pageBean.getPageSize());
-		para.put("page", pageBean.getPageNo());
-		para.put("key", KeyId);
-		ApiStoreSDK.execute(this.requestUrl, ApiStoreSDK.GET, para, new ApiCallBack() {
-			@Override
-			public void onSuccess(int status, String responseString) {
-				Message msg = new Message();
-				Bundle bundle = new Bundle();
-				bundle.putString("responseString", responseString);
-				msg.setData(bundle);// bundle传值，耗时，效率低
-				handler.sendMessage(msg);
-			}
+		 handler = new MyHandler();
+		if (key == Contents.ZH) {
+			requestUrl = action_news_global;
+		} else if (key == Contents.TE) {
+			requestUrl = action_news_te;
+		} else {
+			requestUrl = action_news_pe;
+		}
+		HttpUtils.post(requestUrl, null, responseHandler);
 
-			@Override
-			public void onError(int status, String responseString, Exception e) {
-				Log.i("sdkdemo", "errMsg: " + (e == null ? "" : e.getMessage()));
-			}
 
-		});
 	}
+
+	private TextHttpResponseHandler responseHandler = new TextHttpResponseHandler() {
+		@Override
+		public void onSuccess(int statusCode, Header[] headers, String response) {
+			Message msg = new Message();
+			Bundle bundle = new Bundle();
+			bundle.putString("responseString", response);
+			msg.setData(bundle);// bundle传值，耗时，效率低
+			handler.sendMessage(msg);
+		}
+
+		@Override
+		public void onFailure(int i, Header[] aheader, String s, Throwable throwable) {
+			// TODO Auto-generated method stub
+			Log.i("sdkdemo", "errMsg: " + s);
+		}
+	};
 
 	public void refreshList(List<News> news) {
 		dataList = news;
@@ -129,13 +139,13 @@ public class MyFragment extends Fragment {
 	public void getNews() {
 		requestData();
 	}
-	
-	@Override  
-    public void onAttach(Activity activity) {  
-        super.onAttach(activity);  
-//        Log.d("Fragment 1", "onAttach");  
-//        if(count>1){
-//        requestData();}
-//        count++;
-    }  
+
+	@Override
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+		// Log.d("Fragment 1", "onAttach");
+		// if(count>1){
+		// requestData();}
+		// count++;
+	}
 }

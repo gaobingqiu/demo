@@ -21,9 +21,9 @@ import base.Contents;
 import base.FragmentAdapter;
 
 public class NewsMainActivity extends FragmentActivity {
-	private final String globalUrl = "http://apis.baidu.com/txapi/world/world";
-	private final String teUrl = "http://api.tianapi.com/keji/";
-	private final String peUrl = "http://api.tianapi.com/tiyu/";
+	private final String globalUrl = "word";
+	private final String teUrl = "te";
+	private final String peUrl = "pe";
 
 	private ViewPager mPageVp;
 
@@ -68,9 +68,9 @@ public class NewsMainActivity extends FragmentActivity {
 	}
 
 	private void init() {
-		Fragment zh = MyFragment.newInstance(Contents.ZH, globalUrl);
-		Fragment xw = MyFragment.newInstance(Contents.PE, peUrl);
-		Fragment yl = MyFragment.newInstance(Contents.TE, teUrl);
+		Fragment zh = MyFragment.newInstance(Contents.ZH);
+		Fragment xw = MyFragment.newInstance(Contents.PE);
+		Fragment yl = MyFragment.newInstance(Contents.TE);
 
 		ArrayList<Fragment> list = new ArrayList<Fragment>();
 
