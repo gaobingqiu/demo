@@ -40,6 +40,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import base.PhoneUtil;
 /**
  * 拍照上传或者调用系统相册
  * @author Administrator
@@ -282,10 +283,14 @@ public class PhotoActivity extends Activity {
 					return;
 				b.flush();
 				b.close();
+				
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
+		PhoneUtil.savePhotoToSDCard(bitmap, Environment.getExternalStorageDirectory().getPath(), "img");
+		File localFile = new File(Environment.getExternalStorageDirectory().getPath()+"/img.png");
+		upload(localFile);
 		showImgs(bitmap, true);
 	}
 
@@ -392,9 +397,16 @@ public class PhotoActivity extends Activity {
 	 * @param view
 	 */
 	public void upImg(View view){
-		RequestParams params = new RequestParams();
-		
+		if (null == filePath || filePath.isEmpty()) {
+			Toast.makeText(this, "请上传图片！", Toast.LENGTH_SHORT).show();
+			return;
+		}
 		File file = new File(filePath);
+		upload(file);
+	}
+	
+	public void upload(File file) {
+		RequestParams params = new RequestParams();
 		try {
 			params.put("file", file);
 			HttpUtils.post(action_upload, params, responseHandler);
