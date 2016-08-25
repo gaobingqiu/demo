@@ -409,6 +409,7 @@ public class PhotoActivity extends Activity {
 		RequestParams params = new RequestParams();
 		try {
 			params.put("file", file);
+			params.put("token", PhoneUtil.getMac());
 			HttpUtils.post(action_upload, params, responseHandler);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -419,6 +420,7 @@ public class PhotoActivity extends Activity {
 		@Override
 		public void onSuccess(int statusCode, Header[] headers, String response) {
 			Log.d("photo", response);
+			PhotoActivity.this.finish();
 		}
 
 		@Override

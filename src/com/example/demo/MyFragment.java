@@ -4,16 +4,12 @@ import java.util.List;
 
 import org.apache.http.Header;
 
-import com.baidu.apistore.sdk.ApiCallBack;
-import com.baidu.apistore.sdk.ApiStoreSDK;
-import com.baidu.apistore.sdk.network.Parameters;
 import com.entity.News;
 import com.entity.Pager;
 import com.http.HttpUtils;
 import com.loopj.android.http.TextHttpResponseHandler;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -23,11 +19,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
 import base.Contents;
 import base.JsonUtil;
 import base.MyAdapter;
-import base.PageBean;
 
 public class MyFragment extends Fragment {
 	private final String action_news_global = "NewsInterface/getGlobalNews.do";

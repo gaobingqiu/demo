@@ -3,12 +3,16 @@ package com.example.demo;
 import org.apache.http.Header;
 
 import com.entity.LoginVo;
+import com.entity.ResetVo;
 import com.http.HttpUtils;
 import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.TextHttpResponseHandler;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -16,6 +20,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,6 +35,7 @@ public class MainActivity extends Activity {
 	String action = "com.example.demo.RegisterActivity";
 	String action_login = "com.example.demo.PersonalActivity";
 	String action_interface_login = "loginInterface/login.do";
+	String action_interface_reset = "loginInterface/reset.do";
 	EditText userNameView;
 	EditText passwordView;
 	CheckBox saveUser;
@@ -93,7 +99,6 @@ public class MainActivity extends Activity {
 		LoginVo loginVo = new LoginVo();
 		loginVo.setPassword(password);
 		loginVo.setUserName(username);
-		loginVo.setToken(PhoneUtil.getMac());
 		RequestParams params = Transformation.setParams(loginVo);
 		HttpUtils.post(action_interface_login, params, responseHandler);
 	}
@@ -101,7 +106,7 @@ public class MainActivity extends Activity {
 	private TextHttpResponseHandler responseHandler = new TextHttpResponseHandler() {
 		@Override
 		public void onSuccess(int statusCode, Header[] headers, String response) {
-			if (null == response||response.isEmpty()) {
+			if (null == response || response.isEmpty()) {
 				Log.d(tag, "连接异常");
 			} else {
 				try {
@@ -114,7 +119,7 @@ public class MainActivity extends Activity {
 					Toast.makeText(MainActivity.this, "账号或者密码错误", Toast.LENGTH_SHORT).show();
 					Log.e(tag, response);
 				}
-				
+
 			}
 		}
 
@@ -183,4 +188,58 @@ public class MainActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+
+	public void showResetDialog(View view) {
+
+		LayoutInflater factory = LayoutInflater.from(this);
+		final View textEntryView = factory.inflate(R.layout.reset_dialog, null);
+		final EditText editTextPassword = (EditText) textEntryView.findViewById(R.id.editTextPassword);
+		final EditText editTextNum = (EditText) textEntryView.findViewById(R.id.editTextNum);
+		AlertDialog.Builder ad1 = new AlertDialog.Builder(MainActivity.this);
+		ad1.setTitle("修改密码:");
+		ad1.setIcon(android.R.drawable.ic_dialog_info);
+		ad1.setView(textEntryView);
+		ad1.setPositiveButton("是", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int i) {
+
+				Log.i("111111", editTextPassword.getText().toString() + editTextNum.getText().toString());
+				ResetVo resetVo = new ResetVo();
+				resetVo.setPassword(editTextPassword.getText().toString());
+				resetVo.setTel(editTextNum.getText().toString());
+				RequestParams params = Transformation.setParams(resetVo);
+				HttpUtils.post(action_interface_reset, params, resetResponseHandler);
+			}
+		});
+		ad1.setNegativeButton("否", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int i) {
+
+			}
+		});
+		ad1.show();// 显示对话框
+
+	}
+
+	private TextHttpResponseHandler resetResponseHandler = new TextHttpResponseHandler() {
+		@Override
+		public void onSuccess(int statusCode, Header[] headers, String response) {
+			if (null == response || response.isEmpty()) {
+				Log.d(tag, "连接异常");
+			} else {
+				if (response.equals("success")) {
+					Toast.makeText(MainActivity.this, "修改成功", Toast.LENGTH_SHORT).show();
+				} else {
+					Toast.makeText(MainActivity.this, response, Toast.LENGTH_SHORT).show();
+					Log.e(tag, response);
+				}
+			}
+
+		}
+
+		@Override
+		public void onFailure(int i, Header[] aheader, String s, Throwable throwable) {
+			// TODO Auto-generated method stub
+
+		}
+	};
+
 }

@@ -3,7 +3,7 @@ package com.entity;
 public class RegisterRequestVo {
 	private String userName;
 	private String password;
-	private String verifyCode;
+	private int code;
 	private String tel;
 	
 	public String getUserName() {
@@ -22,12 +22,13 @@ public class RegisterRequestVo {
 		this.password = password;
 	}
 
-	public String getVerifyCode() {
-		return verifyCode;
+	
+	public int getCode() {
+		return code;
 	}
 
-	public void setVerifyCode(String verifyCode) {
-		this.verifyCode = verifyCode;
+	public void setCode(int code) {
+		this.code = code;
 	}
 
 	public String getTel() {

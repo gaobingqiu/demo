@@ -9,6 +9,7 @@
     <string name="buttonName">登录</string>
     <string name="message">没有账号？</string>
     <string name="registerMessage">点我注册</string>
+    <string name="tips_reset">忘记密码</string>
     <string name="remember">记住密码</string>
     <string name="user_tips">手机号\用户名</string>
     <string name="pass_tips">请输入密码</string>
@@ -27,36 +28,48 @@
     <!-- 注册成功页面 -->
     <string name="tips_register_success">恭喜您注册成功！</string>
     <string name="show_userName">您的用户名：</string>
+    <string name="show_password">您的密码是，请记下：</string>
     <string name="tips_toPersonal">进入个人中心：</string>
     <string name="toPersonal">个人中心</string>
 
     <!-- 颜色 -->
     <color name="red_dark">#21A9DD</color>
     <color name="red_light">#26A6E0</color>
-    
-    <!--   个人中心 -->
+
+    <!-- 个人中心 -->
     <string name="toIndex">首页</string>
     <string name="toMy">我的账号</string>
     <string name="eg_name">高炳秋</string>
     <string name="eg_vip">尊贵的VIP</string>
     <string name="eg_rest">第1次登陆</string>
-    <string name="detail">查看详情信息</string>
+    <string name="detail">浏览新闻资讯</string>
     <string name="to_real">实名认证</string>
     <string name="to_tel">手机绑定</string>
     <string name="to_email">邮箱绑定</string>
     <string name="to_password">登录密码管理</string>
     <string name="to_answer">常见问题</string>
     <string name="toOut">退出登录</string>
-    
-     <!--   news_top    -->
+
+    <!-- news_top -->
     <string name="global">国际新闻</string>
     <string name="pe_news">体育新闻</string>
     <string name="te_news">科技新闻</string>
-    
-    <!--   photo Upload    -->
+
+    <!-- photo Upload -->
     <string name="photo_tips">请输入个性签名和选择个人照片！</string>
     <string name="photo_title">个性信息</string>
     <string name="get_more">点击获取更多</string>
     <string name="photo_count">还可以输入100个字符！</string>
+
+    <!-- listView -->
+    <string name="xlistview_header_hint_normal">下拉刷新</string>
+    <string name="xlistview_header_hint_ready">松开刷新数据</string>
+    <string name="xlistview_header_hint_loading">正在加载...</string>
+    <string name="xlistview_header_last_time">上次更新时间：</string>
+    <string name="xlistview_footer_hint_normal">查看更多</string>
+    <string name="xlistview_footer_hint_ready">松开载入更多</string>
+    <!-- listView -->
+    <string name="password">密码</string>
+    <string name="tel">手机号码</string>
 
 </resources>
