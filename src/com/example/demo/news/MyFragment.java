@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.news;
 
 import java.util.List;
 
@@ -6,6 +6,7 @@ import org.apache.http.Header;
 
 import com.entity.News;
 import com.entity.Pager;
+import com.example.demo.R;
 import com.http.HttpUtils;
 import com.loopj.android.http.TextHttpResponseHandler;
 

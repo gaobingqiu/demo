@@ -1,11 +1,11 @@
-package com.example.demo;
+package com.example.demo.news;
 
 import java.util.ArrayList;
 
+import com.example.demo.R;
+
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
@@ -21,10 +21,7 @@ import base.Contents;
 import base.FragmentAdapter;
 
 public class NewsMainActivity extends FragmentActivity {
-	private final String globalUrl = "word";
-	private final String teUrl = "te";
-	private final String peUrl = "pe";
-
+	
 	private ViewPager mPageVp;
 
 	private FragmentAdapter mFragmentAdapter;

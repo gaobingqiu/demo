@@ -7,6 +7,7 @@ import java.util.Map;
 import org.apache.http.Header;
 
 import com.entity.User;
+import com.example.demo.news.NewsMainActivity;
 import com.http.HttpUtils;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;

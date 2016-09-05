@@ -12,7 +12,6 @@ import com.http.BitmapCache;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -78,13 +77,12 @@ public class MyAdapter extends BaseAdapter {
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
-		viewHolder = (ViewHolder) convertView.getTag();
 		News news = list.get(position);
 		imgUrl = news.getPicUrl();
 		viewHolder.img.setDefaultImageResId(R.drawable.nubia);
 		viewHolder.img.setErrorImageResId(R.drawable.nubia);
 		viewHolder.img.setImageUrl(imgUrl, imageLoader);
-
+		
 		viewHolder.ctime.setText(news.getCtime().substring(5));
 		viewHolder.description.setText(news.getDescription());
 		viewHolder.title.setText(news.getTitle());

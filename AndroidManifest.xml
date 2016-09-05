@@ -96,7 +96,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".NewsMainActivity"
+            android:name="com.example.demo.news.NewsMainActivity"
             android:label="NewsMainActivity" >
             <intent-filter>
                 <action android:name="com.example.demo.NewsMainActivity" />
